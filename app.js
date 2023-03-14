@@ -13,7 +13,7 @@ The signup.html is also a static page in our local file system so in
 order to serve up static files we need a static folder*/
 
 app.get("/",function(req,res){
-    res.sendFile(__dirname + "/signup.html");
+    res.sendFile(__dirname + "/index.html");
 })
 
 app.post("/",function (req,res) {
@@ -36,7 +36,7 @@ app.post("/",function (req,res) {
     const url = "https://us21.api.mailchimp.com/3.0/lists/1a68d876d5"
     const options = {
         method: "POST",
-        auth: "Newsletter:6cc58cf33a66a7c3ad3cf1255ae50114-us21",
+        auth: "Newsletter:16266f40d212e1c7f848f77a5f97fdbf-us21",
     }
     const request = https.request(url, options, function(response){
         response.on("data", function(data){
@@ -58,12 +58,15 @@ app.post("/failure",function(req,res){
     res.redirect("/");
 })
 
-app.listen(process.env.PORT || 3000/*dynamic port or static port*/, function(req,res){
+app.listen(3000, function(req,res){
     console.log("Server Started");
 })
 
 // API Key(name: Newsletter)
 // 6cc58cf33a66a7c3ad3cf1255ae50114-us21
+
+//New API Key
+//16266f40d212e1c7f848f77a5f97fdbf-us21
 
 // list id (helps mailchimp identify the list you want your subscribers to be into)
 // 1a68d876d5
